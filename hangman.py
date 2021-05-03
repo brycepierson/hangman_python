@@ -19,6 +19,9 @@ class hangman:
             self.gameState.initializeGameState()
             print("Welcome to Hangman: The Game!")
             randomWord = self.chooseRandomWord()
+            print("How many incorrect guesses do you want? (word length is " + str(len(randomWord)) + ")")
+            desiredGuesses = input(":")
+            self.gameState.maxWrongGuesses = int(desiredGuesses)
             self.mainGameLoop(randomWord)
             print("Play again?")
             answer = input(":").lower()
@@ -75,7 +78,7 @@ class hangman:
                 guessed = True
                 break
         if guessed:
-            print("CONGRATULATIONS! You won!")
+            print("CONGRATULATIONS! You won! The word was: " + magicWord)
         else:
             print("Too Bad! Out of guesses! The word was: " + magicWord)
 
